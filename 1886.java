@@ -38,4 +38,22 @@ public class Leetcode1886 {
         }
         return ans;
     }
+
+
+    // Optimised Solution
+
+
+    public boolean findRotationOptimised(int[][] mat, int[][] target) {
+        boolean[] ansArr = {true,true,true,true};
+        int n = mat.length;
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) {
+                if(mat[i][j]!=target[i][j]) ansArr[0]=false;
+                if(mat[i][j]!=target[n-j-1][i]) ansArr[1]=false;
+                if(mat[i][j]!=target[n-i-1][n-j-1]) ansArr[2]=false;
+                if(mat[i][j]!=target[j][n-i-1]) ansArr[3]=false;
+            }
+        }
+        return ansArr[0]||ansArr[1]||ansArr[2]||ansArr[3];
+    }
 }
